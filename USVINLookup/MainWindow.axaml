@@ -1,0 +1,89 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="USVINLookup.MainWindow"
+        Title="VIN Decoder"
+        Width="600" Height="700"
+        Icon="avares://USVINLookup/assets/appicon.ico"
+        >
+
+  <Window.Background>
+    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+      <GradientStop Color="#252525" Offset="0"/>
+      <GradientStop Color="#1E1E1E" Offset="1"/>
+    </LinearGradientBrush>
+  </Window.Background>
+
+  <DockPanel LastChildFill="True" Margin="20">
+
+    <!-- Footer -->
+    <TextBlock DockPanel.Dock="Bottom"
+               Text="Version 1.0.0 - by: Gabriel A. Rodriguez"
+               FontSize="12"
+               Foreground="#888"
+               HorizontalAlignment="Center"
+               Margin="0,10,0,0"/>
+
+    <!-- Main content -->
+    <StackPanel Spacing="12">
+
+      <!-- Header with Drop Shadow -->
+      <TextBlock Text="🔍 Vehicle VIN Decoder"
+                 FontSize="22"
+                 FontWeight="Bold"
+                 Foreground="White"
+                 Margin="0,0,0,10">
+        <TextBlock.Effect>
+          <DropShadowEffect Color="Black" BlurRadius="6" Opacity="0.7" />
+        </TextBlock.Effect>
+      </TextBlock>
+
+      <!-- VIN Input -->
+      <TextBox Name="VinInput"
+               Watermark="Enter VIN (17 characters)"
+               MaxLength="17"
+               FontSize="16"
+               Padding="8" />
+
+      <!-- Decode VIN Button inside a Border for styling -->
+      <Border CornerRadius="6" Background="#2A2A2A" Margin="0,10,0,0" 
+              BorderBrush="#4A90E2" BorderThickness="1">
+        <Button Name="SearchButton"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="#4A90E2"
+                FontSize="16"
+                Padding="10">
+          <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+            <TextBlock Text="🔍" />
+            <TextBlock Text="Decode VIN"/>
+          </StackPanel>
+        </Button>
+      </Border>
+
+      <!-- Result Text -->
+      <TextBlock Name="ResultBlock"
+                 TextWrapping="Wrap"
+                 Margin="0,15,0,0"
+                 FontSize="14"
+                 Foreground="#DDD" />
+
+      <!-- Search Car Images Button -->
+      <Border CornerRadius="6" Background="#2A2A2A" Margin="0,20,0,0"
+              BorderBrush="#4A90E2" BorderThickness="1"
+              IsVisible="{Binding ElementName=ImageSearchButton, Path=IsVisible}">
+        <Button Name="ImageSearchButton"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="#4A90E2"
+                FontSize="16"
+                Padding="10">
+          <StackPanel Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+            <TextBlock Text="🖼️" />
+            <TextBlock Text="Search Car Images"/>
+          </StackPanel>
+        </Button>
+      </Border>
+
+    </StackPanel>
+  </DockPanel>
+</Window>
